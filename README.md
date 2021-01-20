@@ -1,3 +1,8 @@
+# DPCPwn
+This is a short exploit script I wrote to serve as a Proof of Concept for the vulnerability I found in a certain family of Cisco routers. The DPC3848VM DOCSIS 3.0 Gateway is a relatively old Cisco router, from around 2014. Sometime ago Technicolor bought-out this router so it might be seen in the wild as a "Technicolor" router.
+
+![Peek 2021-01-19 20-14](https://user-images.githubusercontent.com/8475295/105113486-0bd2f880-5a93-11eb-916f-7f63fa963278.gif)
+
 # Technicolor DPC3848VM DOCSIS 3.0 Gateway RCE vulnerability
 
 Tested on firmware: dpc3800-v303r2042162-160620a
@@ -16,11 +21,13 @@ The post request for the ping function looks as follows
 
 ![Screenshot from 2021-01-19 14-51-49](https://user-images.githubusercontent.com/8475295/105085581-ee3b6a00-5a65-11eb-88e0-0829fec165e5.png)
 
-Of note is the ping_dst parameter in the post request. What if one were to write an arbitrary command into that parameter?
+Of note is the ping_dst parameter in the request body. What if one were to write an arbitrary command into that parameter?
 
 ![image](https://user-images.githubusercontent.com/8475295/105087210-280d7000-5a68-11eb-962b-b172cb519438.png)
 
-We can reasonably guess that the ping_dst parameter is substituted into a shell command of the form "/bin/sh -c ping {ping_dst}", so if we craft our input carefully we can execute and commands we want. An easy way to do this without knowing exactly what the shell command looks like is to use bash command substitution (see the backticks `).
+We can reasonably guess that the ping_dst parameter is substituted into a shell command of the form "/bin/sh -c ping {ping_dst}", so if we craft our input carefully we can execute any command we like. An easy way to do this without knowing exactly what the shell command looks like is to use bash command substitution (see the backticks `).
 
 ![image](https://user-images.githubusercontent.com/8475295/105087707-e7622680-5a68-11eb-8614-f7f7977e194c.png)
 
+# Severity
+Since this exploit is neither difficult nor complex, it is possible this vulnerability has already been exploited in the wild. It is also easy to cross-compile for the DPC3848's CPU architecture, so botnet slaves can easily be made for this system. Also, since the web server is running as root on the device we also get root access to the whole machine, making it easy to intercept network traffic with tcpdump.
