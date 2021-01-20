@@ -1,0 +1,4 @@
+colorama~=0.4.4
+trio~=0.18.0
+asks~=2.4.12
+loguru~=0.5.3

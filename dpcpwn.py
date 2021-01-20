@@ -17,11 +17,9 @@
 
 import argparse
 import colorama
-import random
 import trio
 import asks
 import sys
-import os
 import re
 from loguru import logger
 from contextlib import asynccontextmanager
