@@ -3,7 +3,7 @@ This is a short exploit script I wrote to serve as a Proof of Concept for the vu
 
 ![Peek 2021-01-19 20-14](https://user-images.githubusercontent.com/8475295/105113486-0bd2f880-5a93-11eb-916f-7f63fa963278.gif)
 
-# Installing
+# Installation
 
 ```
 git clone https://github.com/Ostoic/dpcpwn
