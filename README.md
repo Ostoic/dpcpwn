@@ -15,7 +15,7 @@ pip3 install -r requirements.txt
 
 Tested on firmware: dpc3800-v303r2042162-160620a
 
-The ping function of the router management website does not properly sanitize user-controlled input. This can lead to remote code execution since it allows one to send arbitrary commands to be executed by the device.
+The ping function of the router management website does not properly sanitize user-controlled input. This can lead to remote code execution this allows one to inject arbitrary text into a command-line string that is to be executed by the device.
 
 In the picture below is the diagnostics page which is available to authenticated users. The "Ping Target IPv4" field has 4 input boxes which allows users to type numbers in each to form an ip address. 
 
