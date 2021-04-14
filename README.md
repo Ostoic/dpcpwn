@@ -1,5 +1,5 @@
 # DPCPwn
-This is a short exploit script I wrote to serve as a Proof of Concept for the vulnerability I found in a certain family of Cisco routers. The DPC3848VM DOCSIS 3.0 Gateway is a relatively old Cisco router, from around 2014. Sometime ago Technicolor bought-out this router so it might be seen in the wild as a "Technicolor" router.
+This is a short exploit script I wrote to serve as a Proof of Concept for a command injection vulnerability I found in a certain model of Cisco router. The DPC3848VM DOCSIS 3.0 Gateway is a relatively old Cisco router, from around 2014. I've encountered this model of router masquerading as a "Technicolor" router.
 
 ![Peek 2021-01-19 20-14](https://user-images.githubusercontent.com/8475295/105113486-0bd2f880-5a93-11eb-916f-7f63fa963278.gif)
 
