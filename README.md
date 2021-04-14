@@ -38,4 +38,4 @@ We can reasonably guess that the ping_dst parameter is substituted into a shell 
 ![image](https://user-images.githubusercontent.com/8475295/105087707-e7622680-5a68-11eb-8614-f7f7977e194c.png)
 
 # Severity
-This is exploit not particularly sophisticated, so it is possible this vulnerability has already been exploited in the wild. It is also easy to cross-compile for the DPC3848's CPU architecture, so botnet slaves can easily be made for this system. Also, since the web server is running as root on the device we also get root access to the whole machine, making it easy to intercept network traffic with tcpdump.
+This is exploit not particularly sophisticated, so it is possible this vulnerability has already been exploited in the wild. Since the web server is running as root on the device we also get root access to the whole machine, making it easy to intercept all (LAN, WAN, etc) network traffic with tcpdump.
