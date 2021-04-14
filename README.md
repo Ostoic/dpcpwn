@@ -1,5 +1,5 @@
 # DPCPwn
-This is a short exploit script I wrote to serve as a Proof of Concept for a command injection vulnerability I found in a certain model of Cisco router. The DPC3848VM DOCSIS 3.0 Gateway is a relatively old Cisco router, from around 2014. I've encountered this model of router masquerading as a "Technicolor" router.
+This is a short exploit script I wrote to serve as a Proof of Concept for an authenticated command injection vulnerability I found in the DPC3848VM router model, which is an old Cisco router from around 2014. I've encountered this model of router masquerading under the "Technicolor" brand.
 
 ![Peek 2021-01-19 20-14](https://user-images.githubusercontent.com/8475295/105113486-0bd2f880-5a93-11eb-916f-7f63fa963278.gif)
 
@@ -15,7 +15,7 @@ pip3 install -r requirements.txt
 
 Tested on firmware: dpc3800-v303r2042162-160620a
 
-The ping function of the router management website does not properly sanitize user-controlled input. This can lead to remote code execution this allows one to inject arbitrary text into a command-line string that is to be executed by the device.
+The ping function of the router management website does not properly sanitize user-controlled input. This can lead to remote code execution as this allows one to inject arbitrary text into a string that is to be executed on the device as a command-line script.
 
 In the picture below is the diagnostics page which is available to authenticated users. The "Ping Target IPv4" field has 4 input boxes which allows users to type numbers in each to form an ip address. 
 
@@ -33,9 +33,9 @@ Of note is the ping_dst parameter in the request body. What if one were to write
 
 ![image](https://user-images.githubusercontent.com/8475295/105087210-280d7000-5a68-11eb-962b-b172cb519438.png)
 
-We can reasonably guess that the ping_dst parameter is substituted into a shell command of the form "/bin/sh -c ping {ping_dst}", so if we craft our input carefully we can execute any command we like. An easy way to do this without knowing exactly what the shell command looks like is to use bash command substitution (see the backticks `).
+We can reasonably guess that the ping_dst parameter is substituted into a shell command of the form "/bin/sh -c ping {ping_dst}", so if we craft our input carefully we can execute any command we like. An easy way to do this without having to worry about syntax errors is to use bash command substitution $(id) or \`id\`.
 
 ![image](https://user-images.githubusercontent.com/8475295/105087707-e7622680-5a68-11eb-8614-f7f7977e194c.png)
 
 # Severity
-Since this exploit is neither difficult nor complex, it is possible this vulnerability has already been exploited in the wild. It is also easy to cross-compile for the DPC3848's CPU architecture, so botnet slaves can easily be made for this system. Also, since the web server is running as root on the device we also get root access to the whole machine, making it easy to intercept network traffic with tcpdump.
+This is exploit not particularly sophisticated, so it is possible this vulnerability has already been exploited in the wild. It is also easy to cross-compile for the DPC3848's CPU architecture, so botnet slaves can easily be made for this system. Also, since the web server is running as root on the device we also get root access to the whole machine, making it easy to intercept network traffic with tcpdump.
