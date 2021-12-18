@@ -14,6 +14,7 @@ pip3 install -r requirements.txt
 # Technicolor DPC3848VM DOCSIS 3.0 Gateway RCE vulnerability
 
 Tested on firmware: dpc3800-v303r2042162-160620a
+(Update) Tested on firmware dpc3800-v303r204318-210209a (buildtime 2021-02-09 08:55:20 UTC)
 
 The ping function of the router management website does not properly sanitize user-controlled input. This can lead to remote code execution as this allows one to inject arbitrary text into a string that is to be executed on the device as a command-line script.
 
