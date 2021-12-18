@@ -31,7 +31,7 @@ The post request for the ping function looks as follows
 
 ![Screenshot from 2021-01-19 14-51-49](https://user-images.githubusercontent.com/8475295/105085581-ee3b6a00-5a65-11eb-88e0-0829fec165e5.png)
 
-Of note is the ping_dst parameter in the request body. What if one were to write an arbitrary command into that parameter?
+Of note is the ping_dst parameter in the request body. What if one were to write an arbitrary command into that parameter? Surely user input is sanitized, right?
 
 ![image](https://user-images.githubusercontent.com/8475295/105087210-280d7000-5a68-11eb-962b-b172cb519438.png)
 
