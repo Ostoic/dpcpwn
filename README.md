@@ -1,5 +1,5 @@
 # DPCPwn
-This is a short exploit script I wrote to serve as a Proof of Concept for an authenticated command injection vulnerability I found in the DPC3848VM router model, which is an old Cisco router from around 2014. I've encountered this model of router masquerading under the "Technicolor" brand.
+This is a short exploit script I wrote to serve as a Proof of Concept for an authenticated command injection vulnerability I found in the DPC3848VM gateway, which is an old Cisco router/modem from around 2014.
 
 ![Peek 2021-01-19 20-14](https://user-images.githubusercontent.com/8475295/105113486-0bd2f880-5a93-11eb-916f-7f63fa963278.gif)
 
