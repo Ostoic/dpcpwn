@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dpcpwn"
+version = "1.0.1"
+authors = [{ name = "Shaun Ostoic", email = "ostoic@proton.me" }]
+description = "DPC3848VM authenticated remote code execution proof of concept"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = ["colorama", "trio", "asks", "loguru"]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "black", "ruff"]
+
+[project.scripts]
+dpcpwn = "dpcpwn:cli.cli"
+
+[tool.pylint]
+max-line-length = 100
+disable = "too-many-arguments"
+good-names = ['s', 'db', 'n', 'i']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+ignore = [
+    "F821",   # Annoying if you want to use quick actions to import (Undefined symbol).
+    "F841",   # Annoying if you save often (unused variable).
+    "TRY003", # A little too strict, wants a new error type for each error.
+    "D102",   # This is overly verbose and wants every single function to have a docstring.
+    "D105",   # Overly verbose, it's unnecessary a lot of times to document magic dunder methods since they are standard functions.
+    "D107",   # Overly verbose, it's unnecessary a lot of times to document magic dunder methods since they are standard functions.
+    "D205",   # Doesn't seem to play well with line lengths.
+]
+
+select = [
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "D",   # pydocstyle
+    "E",   # Error
+    "F",   # pyflakes
+    "I",   # isort
+    "ISC", # flake8-implicit-str-concat
+    "N",   # pep8-naming
+    "PTH", # flake8-use-pathlib
+    "Q",   # flake8-quotes
+    "S",   # bandit
+    "SIM", # flake8-simplify
+    "TRY", # tryceratops
+    "UP",  # pyupgrade
+    "W",   # Warning
+    "YTT", # flake8-2020
+]
+
+exclude = [
+    "migrations",
+    "__pycache__",
+    "manage.py",
+    "settings.py",
+    "env",
+    ".env",
+    "venv",
+    ".venv",
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["S101", "D103"]
+"units.py" = ["D101", "D105"]
+
+[tool.black]
+experimental-string-processing = true
+
+[tool.pytest.ini_options]
+pythonpath = "src"
